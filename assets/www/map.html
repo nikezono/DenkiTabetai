@@ -20,18 +20,27 @@
     var latitude,longitude;
     latitude = 35;
     longitude = 150;
+	
 
     //レンダリング
 	$(function() {
     $("#map_canvas").gmap({"center":"35.41365, 139.445314", "zoom":18});
 	});
-    </script>
 
+    </script>
  	<script type="text/javascript" src="jquery.ui.map.full.min.js"></script>
+ 	
+ 	<style type = "text/css">
+ 	.page-map, .ui-content, #map_canvas { width: 100%; height: 100%; padding: 0; }
+ 	</style>
+ 	
     </head>
     <body>
-	
-	<div id="map_canvas" style="width=40%;height:400px;"></div>
-
+	<div data-role="page" data-theme="b" class="page-map">
+    <div data-role="header"><h1>Map</h1></div>
+    	<div data-role="content" style="padding:0;">
+			<div id="map_canvas"></div>
+		</div>
+	</div>
     </body>
  </html>
