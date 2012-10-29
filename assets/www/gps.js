@@ -8,7 +8,7 @@
  * gps.latとかで緯度経度を取り出す
  */
 
-class GPS(){
+var GPS = function(){
 
 	var lat,lng,alt,hdng;
 	
@@ -27,5 +27,4 @@ class GPS(){
 	function getGPS(){
 		navigator.geolocation.getCurrentPosition(onSuccess, onError);
 	}
-	
-}
+};
