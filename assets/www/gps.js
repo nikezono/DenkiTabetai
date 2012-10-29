@@ -15,12 +15,9 @@ class GPS(){
 	function onSuccess(position) {
 		lat = position.coords.latitude;
     	lng = position.coords.longitude;
-    	alt = position.coords.altitude;
-    	hdng = position.coords.heading;
-    	//var t = new Date(position.timestamp);現在時刻
-    	console.log(lat);
-    	alert(lat);
-    	
+    	//alt = position.coords.altitude;//高さ
+    	//hdng = position.coords.heading;//方角(360度)
+    	//var t = new Date(position.timestamp);現在時刻	
 	};
  
 	function onError(error) {
