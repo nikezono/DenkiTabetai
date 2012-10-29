@@ -1,22 +1,4 @@
-<!DOCTYPE html>
-<!-- 
-	map.html
-	com.nun.denkitabetai
-	
--->
-
-<html>
-  <head>
-    <title>DenkiTabetai.maps</title>
-    <meta name="viewport" content="width=device-width,height=device-height, initial-scale=1">
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
-    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
-    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-    <script type="text/javascript" src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
-    <script type="text/javascript">
-    
-    //GPS起動のコールバック関数内をinitializeの代わりにする 
+   //GPS起動のコールバック関数内をinitializeの代わりにする 
     function GoogleMaps(){
     var latitude,longitude,map,latlng,user;
     var infowindow = [];  
@@ -67,19 +49,3 @@
     	  });
     	}
 	}
-    </script>
- 	
- 	<style type = "text/css">
- 	.page-map, .ui-content, #map_canvas { width: 100%; height: 100%; padding: 0; }
- 	</style>
- 	
-    </head>
-    <body>
-	<div data-role="page" data-theme="b" class="page-map">
-    <div data-role="header"><h1>Map</h1></div>
-    	<div data-role="content" style="padding:0;">
-			<div id="map_canvas"></div>
-		</div>
-	</div>
-    </body>
- </html>
