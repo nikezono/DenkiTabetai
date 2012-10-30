@@ -8,7 +8,9 @@
       return longitude = position.coords.longtitude;
     });
     return $.getJSON("http://ngkr.net:3000/?lat=" + latitude + "&lng=" + longitude, function(json) {
-      return alert(json);
+      alert(json);
+      alert(json.results);
+      return alert(json.results[1].title);
     });
   });
 }).call(this);
