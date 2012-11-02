@@ -21,8 +21,8 @@
  	.ui-content{height: 320px;}
  	</style>
     <script type="text/javascript" src="GoogleMaps.js"></script>
-    <script type="text/javascript" src="json.js"></script>
     <script type="text/javascript" src="list.js"></script>
+    <script type="text/javascript" src="json.js"></script>
     
     <!-- はじめに現在の緯度・経度を測定する
     <script type="text/javascript">
@@ -30,7 +30,11 @@
     </script> 
     このタイミングでの取得でも遅いのでロード画面かローディングエフェクトをはさまないとイベントを取りこぼすことがわかった。
     ロード画面を用意するのは面倒なので、apk実行時（ライブラリのロード時）にGPS情報を取得する。
-    追記:getJSON().success(function)で良いことになった。速い-->
+    追記:getJSON().success(function)で良いことになった。速い
+    しかし画面がreloadされたときにlistを表示していると（同期通信時)、
+    $("ul").listview("refresh");
+    しないとcssが適用されない。
+    そして、reloadをハンドルする方法を知らない。-->
     
   </head>
   <body>
@@ -47,17 +51,6 @@
       <a href="#map" data-role="button" id = "btnMap">MAP</a>
       <a href="#list" data-role="button" id = "btnList">LIST</a>
     </div>
-    
-      
-    <script type="text/javascript">
-	//ホーム画面の描画が終わったタイミングでこっそりlistviewを更新する 
-	//しないと、リロードや測りなおしに対応できない
-	//したいのだが、listview(refresh)は、非同期通信のときしか使えないらしい
-	//どこで呼び出せば動くのだろうか？
-	$(function(){
-		$('#li').listview("refresh");
-	});
-    </script>
       
   </div>
   
@@ -88,7 +81,7 @@
  <div id = "list" data-role="page" class="page-list">
     <div data-role="header" ><h1>現在地周辺の電源カフェ</h1></div>
     <div data-role="content" id = "contentLi">
-    <ul data-role="listview" data-role="listview" data-inset="true" id ="li">
+    <ul data-role="listview" data-split-icon="arrow-r" data-filter="true" data-inset="true"  id ="li">
     <!-- list部分。スクリプトによりjQuery.appendしていく -->
     </ul>
     </div>
