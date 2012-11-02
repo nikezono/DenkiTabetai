@@ -4,44 +4,66 @@
     <title>電気食べたい</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- 必要なスタイルシート、ライブラリ群 -->
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
-    <style type = "text/css">
- 	.page-map, .ui-content, #map_canvas { width: 100%; height: 85%; padding: 0; }
- 	</style>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
     <script type="text/javascript" src="cordova-2.1.0.js"></script>
+    
+    <!-- ユーザー定義スタイルシート、ライブラリ -->
+    <style type = "text/css">
+    #container{height: 100%; width: 100%;}
+ 	.page-map, .ui-content, #map_canvas { width: 100%; height: 85%; padding: 0; }
+ 	#icon{text-align:center;}
+ 	.ui-content{height: 320px;}
+ 	</style>
     <script type="text/javascript" src="GoogleMaps.js"></script>
+    <script type="text/javascript" src="json.js"></script>
+    <script type="text/javascript" src="list.js"></script>
+    
+    <!-- はじめに現在の緯度・経度を測定する
+    <script type="text/javascript">
+    var response = json();
+    </script> 
+    このタイミングでの取得でも遅いのでロード画面かローディングエフェクトをはさまないとイベントを取りこぼすことがわかった。
+    ロード画面を用意するのは面倒なので、apk実行時（ライブラリのロード時）にGPS情報を取得する。
+    追記:getJSON().success(function)で良いことになった。速い-->
+    
   </head>
   <body>
-
+	<div id="container">
   <!--HOME-->
-    <div id = "home" data-role="page" >
+  <div id = "home" data-role="page" >
 
-      <div data-role="header">
-        <h1>電気食べたい</h1>
-      </div>
-
-      <div data-role="content">
-        <p>いずれアイコン</p>
-        <a href="#map" data-role="button" id = "btnMap">MAP</a>
-        <a href="#list" data-role="button">LIST</a>
-        <a href="#profile" data-role="button">PROFILE</a>
-      </div>
-      
-	<div data-role="footer">
-	  <div data-role="navbar">   
-	    <ul>
-	      <li><a id="Home" class="ui-btn-active">Home</a></li>
-	      <li><a id="Map" href="#map">Map</a></li>
-	      <li><a id="List">List</a></li>
-	    </ul>
-	  </div>
+  	<div data-role="header">
+ 	  <h1>電気食べたい</h1>
     </div>
+
+    <div data-role="content">
+      <center><img src="sfc.png" id = "icon" /></center>
+      <a href="#map" data-role="button" id = "btnMap">MAP</a>
+      <a href="#list" data-role="button" id = "btnList">LIST</a>
+    </div>
+    
+      
+    <script type="text/javascript">
+	//ホーム画面の描画が終わったタイミングでこっそりlistviewを更新する 
+	//しないと、リロードや測りなおしに対応できない
+	//したいのだが、listview(refresh)は、非同期通信のときしか使えないらしい
+	//どこで呼び出せば動くのだろうか？
+	$(function(){
+		$('#li').listview("refresh");
+	});
+    </script>
+      
   </div>
+  
+  
   <!--Map-->
+  
   <div id = "map" data-role="page" class="page-map">
     <div data-role="header"><h1>Map</h1></div>
     <div data-role="content" style="padding:0;">
@@ -50,21 +72,37 @@
     <div data-role="footer">
 	  <div data-role="navbar">   
 	    <ul>
-	      <li><a id="Home" href="#home">Home</a></li>
-	      <li><a id="Map" class="ui-btn-active">Map</a></li>
-	      <li><a id="List">List</a></li>
+	      <li><a id="btnHome" href="#home">Home</a></li>
+	      <li><a id="btnMap" class="ui-btn-active">Map</a></li>
+	      <li><a id="btnList">List</a></li>
 	    </ul>
 	  </div>
     </div>
   </div>
   <script type="text/javascript">
-  //$(function(){$(document).bind("deviceready", GoogleMaps)});
-	  GoogleMaps();
+  $(function(){$(document).bind("deviceready", GoogleMaps)});
   </script>
+  
+  
   <!--List-->
-
-
-
+ <div id = "list" data-role="page" class="page-list">
+    <div data-role="header" ><h1>現在地周辺の電源カフェ</h1></div>
+    <div data-role="content" id = "contentLi">
+    <ul data-role="listview" data-role="listview" data-inset="true" id ="li">
+    <!-- list部分。スクリプトによりjQuery.appendしていく -->
+    </ul>
+    </div>
+    <div data-role="footer">
+	  <div data-role="navbar">   
+	    <ul>
+	      <li><a id="btnHome" href="#home">Home</a></li>
+	      <li><a id="btnMap">Map</a></li>
+	      <li><a id="btnList" class="ui-btn-active">List</a></li>
+	    </ul>
+	  </div>
+    </div>
+</div>
+</div>
   </body>
 
 </html>
