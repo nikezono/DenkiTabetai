@@ -11,9 +11,10 @@ var latitude, longitude;
     	alert("GPS error");
     });
     
-    $.getJSON("http://ngkr.net:3000/?lat=" + latitude + "&lng=" + longitude+"&callback=", function(json) {
+    $.getJSON("http://denki.nikezono.net/?lat="+latitude+"&lng="+longitude, null,function(json) {
     	setList(json);
     });
+    
     
     
   });
