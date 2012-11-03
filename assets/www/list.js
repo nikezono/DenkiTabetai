@@ -15,13 +15,17 @@ function setList(){
 	  
 
 		//もらったjsonファイルを距離順に並べ替える
+		//まずは距離を付ける。
 		for(var num in res.results){
 			//console.log(res.results[num].latitude,longitude);
 			var dis = getLength(res.results[num].latitude,res.results[num].longitude,latitude,longitude);
 			res.results[num].distance = dis;
 		}
-		res.results.sort(sort_by('distance', false, parseInt));
-		//console.log(res.results);
+		
+		//次に並べ替える
+		res.results.sort(function(a,b) { return parseFloat(a.distance) - parseFloat(b.distance) } );
+		
+		console.log(res.results);
 	  
 	  
 	  if(res.results.length == 0){
@@ -33,8 +37,7 @@ function setList(){
 	  	$("#li").append(
   			"<li><a href='" + res.results[num].url_pc + "'>"
 	  			+ res.results[num].title + "</a>" +
-  			"<span class='ui-li-aside' style=' text-align:left;font-weight:lighter;font-style:italic;'>" + 
-  			res.results[num].category[0] +  "," + res.results[num].category[1] +"</span>" +
+	  			//ネガ・ポジ七段階アイコンを付ける
   			"<span class='ui-li-count'>"+res.results[num].powersupply +"</span>" +
   			"</li>"
      	);
@@ -42,21 +45,6 @@ function setList(){
 	  }
   //});
 }
-
-var sort_by = function(field, reverse, primer){
-	   reverse = (reverse) ? -1 : 1;
-	   return function(a,b){
-	       a = a[field];
-	       b = b[field];
-	       if (typeof(primer) != 'undefined'){
-	           a = primer(a);
-	           b = primer(b);
-	       }
-	       if (a<b) return reverse * -1;
-	       if (a>b) return reverse * 1;
-	       return 0;
-	   }
-	}
 
 function getLength(x1 , y1 , x2 , y2 ) {
 	　　var pointLength;
