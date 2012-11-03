@@ -6,15 +6,15 @@
  * GPS gps = new GPS;
  * gps.getGps()でGPSの値を取得する
  * gps.latとかで緯度経度を取り出す
- */
+*/
+var latitude,longitude;
 
-var GPS = function(){
+function getGPS(){
 
-	var lat,lng,alt,hdng;
-	
+
 	function onSuccess(position) {
-		lat = position.coords.latitude;
-    	lng = position.coords.longitude;
+		latitude = position.coords.latitude;
+    	longitude = position.coords.longitude;
     	//alt = position.coords.altitude;//高さ
     	//hdng = position.coords.heading;//方角(360度)
     	//var t = new Date(position.timestamp);現在時刻	
@@ -28,3 +28,5 @@ var GPS = function(){
 		navigator.geolocation.getCurrentPosition(onSuccess, onError);
 	}
 };
+
+$(function(){getGPS();});

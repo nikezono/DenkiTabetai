@@ -4,13 +4,13 @@
 *  index.html#listにリストを追加していく
 */
 
-function setList(res){
+function setList(res,latitude,longitude){
 
 	  if(res.results.length == 0){
 		  $("#li").text();
 		  alert("現在位置周辺に利用可能な電源カフェはありません");
 	  }else{
-	  getDistance(res);
+	  getDistance(res,latitude,longitude);
 	  for(var num in res.results){
     	
 	  	$("#li").append(
@@ -34,7 +34,7 @@ function getLength(x1 , y1 , x2 , y2 ) {
 
 //もらったjsonファイルを距離順に並べ替える
 //まずは距離を付ける。
-function getDistance(res){
+function getDistance(res,latitude,longitude){
 	for(var num in res.results){
 		//console.log(res.results[num].latitude,longitude);
 		var dis = getLength(res.results[num].latitude,res.results[num].longitude,latitude,longitude);
