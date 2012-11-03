@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
-    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
     <script type="text/javascript" src="cordova-2.1.0.js"></script>
     
@@ -22,6 +22,7 @@
    	</style>
     <script type="text/javascript" src="list.js"></script>
     <script type="text/javascript" src="json.js"></script>
+<!--    <script type="text/javascript" src="map.js"></script> -->
     
     <!-- はじめに現在の緯度・経度を測定する
     <script type="text/javascript">
@@ -38,7 +39,7 @@
   </head>
   <body>
   <!--HOME-->
-  <div id = "home" data-role="page" >
+  <div id="home" data-role="page" >
 
   	<div data-role="header">
  	  <h1>電気食べたい</h1>
@@ -46,7 +47,7 @@
 
     <div data-role="content">
       <center><img src="sfc.png" id = "icon" /></center>
-      <a href="#map" data-role="button" id = "btnMap homeToMap">MAP</a>
+      <a href="#mapLoad" data-role="button" id = "btnMap homeToMap">MAP</a>
       <a href="#list" data-role="button" id = "btnList homeToList">LIST</a>
     </div>
       
@@ -55,15 +56,14 @@
   
   <!--Map-->
   
-  <div id = "map" data-role="page" class="page-map">
+  <div id="mapLoad" data-role="page">
 
     <div data-role="header">
       <h1>Map</h1>
     </div>
 
-    <div data-role="content">
-      <div id="map_canvas"></div>
-    </div>
+    <div id="map" data-role="content"></div>
+    <script type="text/javascript" src="map.js"></script>
 
     <div data-role="footer">
       <div data-role="navbar">   
