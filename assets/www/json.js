@@ -7,11 +7,14 @@ var latitude, longitude;
     navigator.geolocation.getCurrentPosition(function() {
       latitude = position.coords.latitude;
       longitude = position.coords.longtitude;
+      alert(latitude+longitude);
     },function(){
-    	//alert("GPS error");
+    	alert("GPS error");
     });
+    
+    $("#homeToMap,#homeToList").hide();
     $.getJSON("http://ngkr.net:3000/?lat=" + latitude + "&lng=" + longitude, function(json) {
     	res = json;
-    }).success(setList).success(setProfile);
+    }).success(setList).success($("#homeToMap,#homeToList").show()).success(alert("Load GPS successed"));
     
   });

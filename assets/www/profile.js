@@ -12,7 +12,7 @@ function setProfile(){
 		json = res.results[num];
 	    $("#profile").append(
 	    		
-	      "<div data-roll='page' id ='" +json.entry_id +"'>" +//ページ化
+	      "<div data-roll='page' id ='id" +json.entry_id +"'>" +//ページ化
 	      "<div data-roll='header'><h1>"+json.title    +"</h1></div>"+//タイトルバー
 	      "<div data-roll='content'>"
 		  	

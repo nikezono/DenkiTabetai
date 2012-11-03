@@ -20,8 +20,9 @@
       #icon{text-align:center;}
       .ui-listview-filter-inset{margin-top:0px;}
    	</style>
-    <script type="text/javascript" src="list.js"></script>
-    <script type="text/javascript" src="json.js"></script>
+    <script type="text/javascript" src="map.js"></script>
+<!--    <script type="text/javascript" src="list.js"></script>
+    <script type="text/javascript" src="json.js"></script>  -->
     
     <!-- はじめに現在の緯度・経度を測定する
     <script type="text/javascript">
@@ -37,6 +38,7 @@
     
   </head>
   <body>
+	<div id="container">
   <!--HOME-->
   <div id = "home" data-role="page" >
 
@@ -46,8 +48,8 @@
 
     <div data-role="content">
       <center><img src="sfc.png" id = "icon" /></center>
-      <a href="#map" data-role="button" id = "btnMap homeToMap">MAP</a>
-      <a href="#list" data-role="button" id = "btnList homeToList">LIST</a>
+      <a href="#map" data-role="button" id = "btnMap">MAP</a>
+      <a href="#list" data-role="button" id = "btnList">LIST</a>
     </div>
       
   </div>
@@ -96,13 +98,6 @@
  	      </ul>
  	    </div>
     </div>
-    
-    <!-- Profile -->
-
-    <div id = "profile">
-    <!-- profile.jsによってここにdata-roll=pageのdivを挿入していく -->
-    </div>
-    
   </div>
 </body>
 

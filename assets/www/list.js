@@ -25,11 +25,12 @@ function setList(){
 		//次に並べ替える
 		res.results.sort(function(a,b) { return parseFloat(a.distance) - parseFloat(b.distance) } );
 		
-		console.log(res.results);
-	  
-	  
+		//console.log(res.results);
+		alert(res.results.length);
+		alert("aaa");
+		
 	  if(res.results.length == 0){
-		  $("#contentLi").text();
+		  $("#li").text();
 		  alert("現在位置周辺に利用可能な電源カフェはありません");
 	  }else{
 	  for(var num in res.results){
