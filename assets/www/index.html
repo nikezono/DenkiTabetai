@@ -15,14 +15,14 @@
     
     <!-- ユーザー定義スタイルシート、ライブラリ -->
     <style type = "text/css">
-    #container{height: 100%; width: 100%;}
-   	.page-map, .ui-content, #map_canvas { width: 100%; height: 100%; padding: 0; }
-  	#icon{text-align:center;}
-  	.ui-listview-filter-inset{margin-top:0px;}
+      #container{height: 100%; width: 100%;}
+     	.page-map, .ui-content, #map_canvas { width: 100%; height: 100%; padding: 0; }
+      #icon{text-align:center;}
+      .ui-listview-filter-inset{margin-top:0px;}
    	</style>
     <script type="text/javascript" src="GoogleMaps.js"></script>
-    <script type="text/javascript" src="list.js"></script>
-    <script type="text/javascript" src="json.js"></script>
+<!--    <script type="text/javascript" src="list.js"></script>
+    <script type="text/javascript" src="json.js"></script>  -->
     
     <!-- はじめに現在の緯度・経度を測定する
     <script type="text/javascript">
@@ -58,44 +58,46 @@
   <!--Map-->
   
   <div id = "map" data-role="page" class="page-map">
-    <div data-role="header"><h1>Map</h1></div>
-    <div data-role="content" style="padding:0;">
+
+    <div data-role="header">
+      <h1>Map</h1>
+    </div>
+
+    <div data-role="content" style="padding:0">
       <div id="map_canvas"></div>
     </div>
+
     <div data-role="footer">
-	  <div data-role="navbar">   
-	    <ul>
-	      <li><a id="btnHome" href="#home">Home</a></li>
-	      <li><a id="btnMap" class="ui-btn-active">Map</a></li>
-	      <li><a id="btnList" href="#list">List</a></li>
-	    </ul>
-	  </div>
+      <div data-role="navbar">   
+        <ul>
+	        <li><a id="btnHome" href="#home">Home</a></li>
+	        <li><a id="btnMap" class="ui-btn-active">Map</a></li>
+          <li><a id="btnList" href="#list">List</a></li>
+        </ul>
+      </div>
     </div>
   </div>
-  <script type="text/javascript">
-  $(function(){$(document).bind("deviceready", GoogleMaps)});
-  </script>
   
   
   <!--List-->
- <div id = "list" data-role="page" class="page-list">
-   <div data-role="header" >
-     <h1>現在地周辺の電源カフェ</h1>
-   </div>
-   <div data-role="content" id = "contentLi">
-     <ul data-role="listview" data-split-icon="arrow-r" data-filter="true" data-inset="true"  id ="li">
-     <!-- list部分。スクリプトによりjQuery.appendしていく -->
-     </ul>
-   </div>
-   <div data-role="footer">
-	   <div data-role="navbar">   
-	     <ul>
-	       <li><a id="btnHome" href="#home">Home</a></li>
-	       <li><a id="btnMap" href="#map">Map</a></li>
-	       <li><a id="btnList" class="ui-btn-active">List</a></li>
-	     </ul>
-	   </div>
-   </div>
+  <div id = "list" data-role="page" class="page-list">
+    <div data-role="header" >
+      <h1>現在地周辺の電源カフェ</h1>
+    </div>
+    <div data-role="content" id = "contentLi">
+      <ul data-role="listview" data-split-icon="arrow-r" data-filter="true" data-inset="true"  id ="li">
+      <!-- list部分。スクリプトによりjQuery.appendしていく -->
+      </ul>
+    </div>
+    <div data-role="footer">
+	    <div data-role="navbar">   
+	      <ul>
+	        <li><a id="btnHome" href="#home">Home</a></li>
+          <li><a id="btnMap" href="#map">Map</a></li>
+          <li><a id="btnList" class="ui-btn-active">List</a></li>
+ 	      </ul>
+ 	    </div>
+    </div>
   </div>
 </body>
 
