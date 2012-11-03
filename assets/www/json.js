@@ -12,6 +12,6 @@ var latitude, longitude;
     });
     $.getJSON("http://ngkr.net:3000/?lat=" + latitude + "&lng=" + longitude, function(json) {
     	res = json;
-    }).success(setList);
+    }).success(setList).success(setProfile);
     
   });
