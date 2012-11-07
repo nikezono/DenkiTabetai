@@ -7,8 +7,7 @@
 function setList(res,latitude,longitude){
 
 	  if(res.results.length == 0){
-		  $("#li").text();
-		  alert("現在位置周辺に利用可能な電源カフェはありません");
+		  $("#li").text("現在位置周辺に利用可能な電源カフェはありません。");
 	  }else{
 	  getDistance(res,latitude,longitude);
 	  for(var num in res.results){

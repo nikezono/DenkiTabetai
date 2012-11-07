@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, user-scalable= no">
     
     <!-- 必要なスタイルシート、ライブラリ群 -->
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-    <script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
-    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
-    <script type="text/javascript" src="cordova-2.1.0.js"></script>
+    <script type="text/javascript" src="js/jquery-1.6.4.min.js"></script>
+    <script type="text/javascript" src="js/jquery.mobile-1.0.1.min.js"></script>
+    <link rel="stylesheet" href="css/jquery.mobile-1.0.1.min.css" />
+    <script type="text/javascript" src="js/googlemaps.api.js"></script>
+    <script type="text/javascript" src="js/jsapi.js"></script>
+    <script type="text/javascript" src="js/cordova-2.1.0.js"></script>
     
     <!-- ユーザー定義スタイルシート、ライブラリ -->
     <style type = "text/css">
@@ -24,20 +24,6 @@
     <script type="text/javascript" src="list.js"></script>
     <script type="text/javascript" src="json.js"></script>
     
-<!--    <script type="text/javascript" src="map.js"></script> -->
-    
-    <!-- はじめに現在の緯度・経度を測定する
-    <script type="text/javascript">
-    var response = json();
-    </script> 
-    このタイミングでの取得でも遅いのでロード画面かローディングエフェクトをはさまないとイベントを取りこぼすことがわかった。
-    ロード画面を用意するのは面倒なので、apk実行時（ライブラリのロード時）にGPS情報を取得する。
-    追記:getJSON().success(function)で良いことになった。速い
-    しかし画面がreloadされたときにlistを表示していると（同期通信時)、
-    $("ul").listview("refresh");
-    しないとcssが適用されない。
-    そして、reloadをハンドルする方法を知らない。-->
-    
   </head>
   <body>
   <!--HOME-->
@@ -49,8 +35,8 @@
 
     <div data-role="content">
       <center><img src="sfc.png" id = "icon" /></center>
-      <a href="#mapLoad" data-role="button" id = "btnMap">MAP</a>
-      <a href="#list" data-role="button" id = "btnList">LIST</a>
+      <a href="#mapLoad" data-role="button" class = "HomeBtn">MAP</a>
+      <a href="#list" data-role="button" class = "HomeBtn">LIST</a>
     </div>
       
   </div>
@@ -65,10 +51,11 @@
     </div>
 
     <div id="map" data-role="content"></div>
+      <div id="canvas"></div>
     <script type="text/javascript" src="map.js"></script>
 
     <div data-role="footer">
-      <div data-role="navbar">   
+      <div data-role="navbar" id = "mapFoot">
         <ul>
 	        <li><a id="btnHome" href="#home">Home</a></li>
 	        <li><a id="btnMap" class="ui-btn-active">Map</a></li>

@@ -1,23 +1,28 @@
-(function($){
-
-	var latitude, longitude
+var latitude, longitude;
+var res;
   $(function() {
-    
+	  
+    $(".HomeBtn").hide();//ホーム非表示
+	  
     latitude = "35.681382";//東京駅
-    longitude = "139.766084";//東京駅h
+    longitude = "139.766084";//東京駅
     navigator.geolocation.getCurrentPosition(function(position) {
       latitude = position.coords.latitude;
       longitude = position.coords.longtitude;
       alert(latitude);
-      $.getJSON("http://denki.nikezono.net/?lat="+latitude+"&lng="+longitude, null,function(json) {  
-      	alert(json.results[0].title);
-      	setList(json,latitude,longitude);
-        });
+      setJSON(latitude,longitude);
     },function(){
-    	alert("GPS error");
+    	alert("GPSが利用できません\nアプリを再起動してください");
+    	setJSON(latitude,longitude);    
     });
+  });
+
+function setJSON(latitude,longitude){
     
     //位置がとれたのでデータをhtmlに書き足していく
-  
-  });
-})(jQuery)
+    $.getJSON("http://denki.nikezono.net/?lat="+latitude+"&lng="+longitude, null,function(json) {  
+      	setList(json,latitude,longitude);
+      	res = json;
+      	$(".HomeBtn").show();
+        });
+}
