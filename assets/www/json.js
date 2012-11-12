@@ -22,6 +22,7 @@ function setJSON(latitude,longitude){
     //位置がとれたのでデータをhtmlに書き足していく
     $.getJSON("http://denki.nikezono.net/?lat="+latitude+"&lng="+longitude, null,function(json) {  
       	setList(json,latitude,longitude);
+      	setProfile(json);
       	res = json;
       	$(".HomeBtn").show();
         });

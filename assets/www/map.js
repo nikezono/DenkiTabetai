@@ -38,9 +38,8 @@ $(function() {
       }
       
       pageHeight = $(document).height();
-      return $("#canvas").css("height", pageHeight - $("#mapFoot").css("height"));
+      return $("#canvas").css("height", pageHeight);
     };
-    
     return $("#mapLoad").bind("pageshow", mapCanvas);
   });
  

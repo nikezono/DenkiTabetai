@@ -5,7 +5,7 @@
  *  取得したAPIから、物件ごとの詳細ページを作成する
  */
 
-function setProfile(){
+function setProfile(res){
 	$(function(){
 		//jquery.appendでページを追加していく。
 	  for (var num in res.results){
@@ -13,9 +13,9 @@ function setProfile(){
 	    $("#profile").append(
 	    		
 	      "<div data-roll='page' id ='id" +json.entry_id +"'>" +//ページ化
-	      "<div data-roll='header'><h1>"+json.title    +"</h1></div>"+//タイトルバー
-	      "<div data-roll='content'>"
-		  	
+	      "<div data-roll='header'><h1>"+json.title+"</h1></div>"+//タイトルバー
+	      "<div data-roll='content'>"+
+	      
 		  	);	
 	  }
 	});	
